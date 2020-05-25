@@ -8,5 +8,7 @@ module.exports = {
       localeDir: "locales",
       enableInSFC: false
     }
-  }
+  },
+
+  lintOnSave: false
 };
