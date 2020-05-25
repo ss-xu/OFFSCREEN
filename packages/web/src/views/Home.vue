@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts">
-    import { Vue, Component } from 'vue-property-decorator';
+    import { Vue, Component, Watch } from 'vue-property-decorator';
 
     interface VideoItem {
         id: number;
@@ -108,6 +108,14 @@
             return this.activeLocale === 'it' ? 'active' : '';
         }
 
+        @Watch('activeLocale')
+        private watchActiveLocale(n: string, o: string) {
+            if (n !== o && o) {
+                this.$i18n.locale = n;
+            }
+        }
+
+
         private handleViewShow(videoItem: VideoItem) {
             if (videoItem.id === 7) {
                 return;
@@ -134,9 +142,7 @@
 </script>
 <style lang="scss" scoped>
     .home {
-        height: 100%;
-        background: #000;
-        padding: 30px 96px 0 96px;
+        width: 1440px;
         display: flex;
         flex-direction: column;
 
@@ -154,8 +160,12 @@
         color: rgba(87, 87, 87, 1);
         line-height: 18px;
 
-        span.active {
-            color: #fff;
+        span {
+            cursor: pointer;
+
+            &.active {
+                color: #fff;
+            }
         }
     }
 
@@ -165,7 +175,7 @@
 
     .video-list {
         position: relative;
-        height: 100%;
+        height: 900px
     }
 
     .video-item {
