@@ -1,33 +1,47 @@
 <template>
     <div class="home">
-        <div class="locale">
-            <span :class="isEnActiveClass" @click="activeLocale = 'en'">En</span> | <span :class="isItActiveClass"
-                                                                                          @click="activeLocale = 'it'">It</span>
-        </div>
-        <div class="home-content">
-            <ul class="video-list">
-                <li v-for="video in videoList" :key="video.id" class="video-item"
-                    :class="activeVideoId === video.id ? 'active' : ''" :style="video.style">
-                    <img :src="video.preview" alt="preview" @click="handleViewShow(video)"/>
-                    <div class="video-frame" v-if="activeVideoId === video.id" v-html="video.iframe"/>
-                </li>
-            </ul>
-            <span class="video-close" v-if="activeVideoId !== -1" @click="activeVideoId = -1">< Back</span>
-            <div class="home-info" v-show="activeVideoId === -1">
-                <span class="author" @click="handleAuthorPage">{{ $t('home.author')}}</span>
-                <span class="projectName" @click="handleCuratorPage">{{ $t('home.projectName')}}</span>
-                <span class="curator">{{ $t('home.curator')}}</span>
+        <div class="header">
+            <div class="nav">
+                <span>X</span>
+                <span>O</span>
+                <span>D</span>
+            </div>
+            <div class="locale">
+                <span :class="isEnActiveClass" @click="activeLocale = 'en'">En</span> | <span :class="isItActiveClass"
+                                                                                              @click="activeLocale = 'it'">It</span>
             </div>
         </div>
+        <ul class="video-list">
+            <li v-for="video in videoList"
+                :key="video.id" class="video-item"
+                :class="{
+                    active: activeVideoId === video.id,
+                    ready: isActiveYTReady,
+                }"
+                :style="video.style"
+            >
+                <img :src="video.preview" alt="preview" @click="handleViewShow(video)"/>
+                <iframe v-if="activeVideoId === video.id" :src="video.url + videoUrlQuery" width="100%" height="100%"
+                        id="video-frame" frameborder="0"/>
+            </li>
+        </ul>
+        <div class="video-info" v-if="isShowVideoInfo">
+            <span class="title">{{activeVideoInfo.title}}</span>
+            <span class="date">{{activeVideoInfo.date}}</span>
+            <span class="desc">{{activeVideoInfo.desc}}</span>
+        </div>
+        <span class="video-close" v-if="activeVideoId !== -1" @click="handleVideoClose">< Back</span>
     </div>
 </template>
 
 <script lang="ts">
+    /// <reference types="youtube"/>
     import { Vue, Component, Watch } from 'vue-property-decorator';
+    import { getOrigin } from '@/common/utils';
 
     interface VideoItem {
         id: number;
-        iframe: string;
+        url: string;
         preview: any;
         style: object;
         videoInfo?: {
@@ -39,12 +53,15 @@
 
     @Component({})
     export default class Home extends Vue {
+        private ytPlayer: YT.Player | null = null;
+        private isActiveYTReady: boolean = false;
+        private activeYTState: YT.PlayerState = -1;
         private activeLocale: 'en' | 'it' = 'en';
         private activeVideoId: number = -1;
         private videoList: VideoItem[] = [
             {
                 id: 1,
-                iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/6LlividaBcE?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+                url: 'https://www.youtube.com/embed/6LlividaBcE',
                 preview: require('@/assets/video_1@2x.webp'),
                 style: {
                     width: '100%',
@@ -52,7 +69,7 @@
             },
             {
                 id: 2,
-                iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/6LlividaBcE?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+                url: 'https://www.youtube.com/embed/6LlividaBcE',
                 preview: require('@/assets/video_2@2x.webp'),
                 style: {
                     width: '77%',
@@ -60,7 +77,7 @@
             },
             {
                 id: 3,
-                iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/6LlividaBcE?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+                url: 'https://www.youtube.com/embed/6LlividaBcE',
                 preview: require('@/assets/video_3@2x.webp'),
                 style: {
                     width: '59%',
@@ -68,31 +85,31 @@
             },
             {
                 id: 4,
-                iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/6LlividaBcE?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+                url: 'https://www.youtube.com/embed/6LlividaBcE',
                 preview: require('@/assets/video_4@2x.webp'),
                 style: {
-                    width: '46%',
+                    width: '45%',
                 }
             },
             {
                 id: 5,
-                iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/6LlividaBcE?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+                url: 'https://www.youtube.com/embed/6LlividaBcE',
                 preview: require('@/assets/video_5@2x.webp'),
                 style: {
-                    width: '36%',
+                    width: '34%',
                 }
             },
             {
                 id: 6,
-                iframe: '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/6LlividaBcE?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+                url: 'https://www.youtube.com/embed/6LlividaBcE',
                 preview: require('@/assets/video_6@2x.webp'),
                 style: {
-                    width: '22%',
+                    width: '25%',
                 }
             },
             {
                 id: 7,
-                iframe: '',
+                url: '',
                 preview: require('@/assets/home-animate.gif'),
                 style: {
                     width: '8%',
@@ -108,6 +125,28 @@
             return this.activeLocale === 'it' ? 'active' : '';
         }
 
+        private get videoUrlQuery() {
+            return `?rel=0&enablejsapi=1&origin=${getOrigin()}`;
+        }
+
+        private get activeVideoInfo() {
+            if (this.activeVideoId === -1) {
+                return;
+            }
+            return {
+                title: this.$t(`home_video_${this.activeVideoId}.title`),
+                date: this.$t(`home_video_${this.activeVideoId}.date`),
+                desc: this.$t(`home_video_${this.activeVideoId}.desc`),
+            }
+        }
+
+        private get isShowVideoInfo() {
+            const isPlaying = this.activeYTState === 1;
+            const isPaused = this.activeYTState === 2;
+            const isEnded = this.activeYTState === 0;
+            return (!!this.activeVideoInfo && !isPlaying) || (isPaused || isEnded);
+        }
+
         @Watch('activeLocale')
         private watchActiveLocale(n: string, o: string) {
             if (n !== o && o) {
@@ -115,12 +154,39 @@
             }
         }
 
-
         private handleViewShow(videoItem: VideoItem) {
-            if (videoItem.id === 7) {
+            if (videoItem.id === 7 || this.activeVideoId !== -1) {
                 return;
             }
             this.activeVideoId = videoItem.id;
+            this.$nextTick(() => {
+                this.ytPlayer = new window.YT.Player('video-frame', {
+                    events: {
+                        onReady: this.onPlayerReady,
+                        onStateChange: this.onPlayerStateChange
+                    }
+                });
+            });
+        }
+
+        private onPlayerReady(event: YT.PlayerEvent) {
+            this.isActiveYTReady = true;
+        }
+
+        private onPlayerStateChange(event: YT.OnStateChangeEvent) {
+            const { data } = event;
+            this.activeYTState = data;
+        }
+
+        private resetYtStatus() {
+            this.ytPlayer = null;
+            this.isActiveYTReady = false;
+            this.activeYTState = -1;
+        }
+
+        private handleVideoClose() {
+            this.activeVideoId = -1;
+            this.resetYtStatus();
         }
 
         private handleAuthorPage() {
@@ -142,23 +208,46 @@
 </script>
 <style lang="scss" scoped>
     .home {
-        width: 1440px;
-        display: flex;
-        flex-direction: column;
+        width: 70%;
+        position: relative;
+    }
 
-        .home-content {
-            flex: 1;
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+    }
+
+    .nav {
+        font-size: 11px;
+        font-weight: bold;
+        color: rgba(94, 93, 93, 1);
+        line-height: 54px;
+
+        span {
+            margin-right: 11px;
+            cursor: pointer;
+
+            &:hover {
+                color: #fff;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+
         }
     }
 
     .locale {
-        margin-bottom: 12px;
         text-align: right;
-        font-size: 18px;
-        font-family: TimesNewRomanPSMT, sans-serif;
+        height: 11px;
+        font-size: 11px;
+        font-family: Times New Roman, sans-serif;
         font-weight: bold;
         color: rgba(87, 87, 87, 1);
-        line-height: 18px;
+        line-height: 54px;
 
         span {
             cursor: pointer;
@@ -169,13 +258,8 @@
         }
     }
 
-    .home-content {
-        position: relative;
-    }
-
     .video-list {
         position: relative;
-        height: 900px
     }
 
     .video-item {
@@ -190,6 +274,13 @@
             cursor: pointer;
         }
 
+        &:first-child {
+            position: relative;
+            top: 0;
+            left: 0;
+            transform: none;
+        }
+
         &:last-child {
             img {
                 cursor: default;
@@ -197,17 +288,60 @@
         }
 
         &.active {
+        }
+
+        &.active.ready {
             z-index: 10;
+
+            img {
+                visibility: hidden;
+            }
+        }
+
+        iframe {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
         }
     }
 
-    .video-frame {
+    .video-info {
+        width: 52%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         position: absolute;
-        left: 50%;
+        left: 0;
         top: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        height: 100%;
+        transform: translate(-30px, -50%);
+        z-index: 10;
+
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 1);
+            line-height: 23px;
+            margin-bottom: 3px;
+        }
+
+        .date {
+            font-size: 14px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 1);
+            line-height: 23px;
+            margin-bottom: 30px;
+        }
+
+        .desc {
+            font-size: 14px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 1);
+            line-height: 24px;
+        }
     }
 
     .video-close {
@@ -215,56 +349,9 @@
         right: -8px;
         top: 50%;
         transform: translate(100%, -50%);
-        font-size: 24px;
-        font-family: TimesNewRomanPSMT, sans-serif;
+        cursor: pointer;
+        font-size: 19px;
         font-weight: bold;
         color: rgba(255, 255, 255, 1);
-        cursor: pointer;
     }
-
-    .home-info {
-        position: absolute;
-        right: -26px;
-        top: 50%;
-        transform: translate(0, -50%);
-        text-align: right;
-        display: flex;
-        flex-direction: column;
-
-        span {
-            margin-bottom: 25px;
-
-            &:last-child {
-                margin-bottom: 0;
-            }
-        }
-
-        .author {
-            font-size: 40px;
-            font-family: TimesNewRomanPSMT, sans-serif;
-            font-weight: bold;
-            color: rgba(255, 255, 255, 1);
-            line-height: 53px;
-            cursor: pointer;
-        }
-
-        .projectName {
-            font-size: 50px;
-            font-family: TimesNewRomanPS-ItalicMT, sans-serif;
-            font-weight: bold;
-            color: rgba(255, 255, 255, 1);
-            line-height: 69px;
-            font-style: italic;
-            cursor: pointer;
-        }
-
-        .curator {
-            font-size: 35px;
-            font-family: TimesNewRomanPSMT, sans-serif;;
-            font-weight: bold;
-            color: rgba(255, 255, 255, 1);
-            line-height: 46px;
-        }
-    }
-
 </style>

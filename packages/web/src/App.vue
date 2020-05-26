@@ -9,6 +9,7 @@
 
     * {
         box-sizing: border-box;
+        font-family: Arial, sans-serif;
     }
 
     html,
@@ -30,7 +31,6 @@
         #app {
             height: 100%;
             width: 100%;
-            margin: 0 auto;
             display: flex;
             justify-content: center;
             align-items: center;
