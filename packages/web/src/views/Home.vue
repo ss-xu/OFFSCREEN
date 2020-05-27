@@ -7,8 +7,7 @@
                 <span>D</span>
             </div>
             <div class="locale">
-                <span :class="isEnActiveClass" @click="activeLocale = 'en'">En</span> | <span :class="isItActiveClass"
-                                                                                              @click="activeLocale = 'it'">It</span>
+                <span :class="isEnActiveClass" @click="activeLocale = 'en'">En</span> | <span :class="isItActiveClass" @click="activeLocale = 'it'">It</span>
             </div>
         </div>
         <ul class="video-list">
@@ -216,14 +215,15 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
+        height: 15px;
     }
 
     .nav {
-        font-size: 11px;
+        font-size: 15px;
         font-weight: bold;
         color: rgba(94, 93, 93, 1);
-        line-height: 54px;
+        line-height: 74px;
 
         span {
             margin-right: 11px;
@@ -242,17 +242,20 @@
 
     .locale {
         text-align: right;
-        height: 11px;
-        font-size: 11px;
+        font-size: 15px;
         font-family: Times New Roman, sans-serif;
         font-weight: bold;
         color: rgba(87, 87, 87, 1);
-        line-height: 54px;
+        line-height: 74px;
 
         span {
             cursor: pointer;
 
             &.active {
+                color: #fff;
+            }
+
+            &:hover {
                 color: #fff;
             }
         }
