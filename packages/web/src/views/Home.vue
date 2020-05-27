@@ -2,12 +2,13 @@
     <div class="home">
         <div class="header">
             <div class="nav">
-                <span>X</span>
-                <span>O</span>
-                <span>D</span>
+                <span @click="handlePageJump('about')">X</span>
+                <span @click="handlePageJump('project')">O</span>
+                <span @click="handlePageJump('curator')">D</span>
             </div>
             <div class="locale">
-                <span :class="isEnActiveClass" @click="activeLocale = 'en'">En</span> | <span :class="isItActiveClass" @click="activeLocale = 'it'">It</span>
+                <span :class="isEnActiveClass" @click="activeLocale = 'en'">En</span> | <span :class="isItActiveClass"
+                                                                                              @click="activeLocale = 'it'">It</span>
             </div>
         </div>
         <ul class="video-list">
@@ -37,6 +38,7 @@
     /// <reference types="youtube"/>
     import { Vue, Component, Watch } from 'vue-property-decorator';
     import { getOrigin } from '@/common/utils';
+    import { ROUTER_ABOUT, ROUTER_CURATOR, ROUTER_PROJECT } from '@/router';
 
     interface VideoItem {
         id: number;
@@ -133,9 +135,9 @@
                 return;
             }
             return {
-                title: this.$t(`home_video_${this.activeVideoId}.title`),
-                date: this.$t(`home_video_${this.activeVideoId}.date`),
-                desc: this.$t(`home_video_${this.activeVideoId}.desc`),
+                title: this.$t(`home.video_${this.activeVideoId}.title`),
+                date: this.$t(`home.video_${this.activeVideoId}.date`),
+                desc: this.$t(`home.video_${this.activeVideoId}.desc`),
             }
         }
 
@@ -159,12 +161,14 @@
             }
             this.activeVideoId = videoItem.id;
             this.$nextTick(() => {
-                this.ytPlayer = new window.YT.Player('video-frame', {
-                    events: {
-                        onReady: this.onPlayerReady,
-                        onStateChange: this.onPlayerStateChange
-                    }
-                });
+                if (window.YT) {
+                    this.ytPlayer = new window.YT.Player('video-frame', {
+                        events: {
+                            onReady: this.onPlayerReady,
+                            onStateChange: this.onPlayerStateChange
+                        }
+                    });
+                }
             });
         }
 
@@ -188,12 +192,24 @@
             this.resetYtStatus();
         }
 
-        private handleAuthorPage() {
-            this.$router.push({});
-        }
-
-        private handleCuratorPage() {
-            this.$router.push({});
+        private handlePageJump(name: string) {
+            let routerName = '';
+            switch (name) {
+                case 'about':
+                    routerName = ROUTER_ABOUT;
+                    break;
+                case 'project':
+                    routerName = ROUTER_PROJECT;
+                    break;
+                case 'curator':
+                    routerName = ROUTER_CURATOR;
+                    break;
+            }
+            if (routerName) {
+                this.$router.push({
+                    name: routerName,
+                });
+            }
         }
 
         private created() {
@@ -202,6 +218,7 @@
 
         private beforeDestroy() {
             document.body.className = '';
+            this.resetYtStatus();
         }
     }
 </script>
@@ -223,7 +240,6 @@
         font-size: 15px;
         font-weight: bold;
         color: rgba(94, 93, 93, 1);
-        line-height: 74px;
 
         span {
             margin-right: 11px;
@@ -246,7 +262,6 @@
         font-family: Times New Roman, sans-serif;
         font-weight: bold;
         color: rgba(87, 87, 87, 1);
-        line-height: 74px;
 
         span {
             cursor: pointer;
@@ -324,22 +339,23 @@
         z-index: 10;
 
         .title {
+            height: 18px;
             font-size: 18px;
             font-weight: bold;
             color: rgba(255, 255, 255, 1);
-            line-height: 23px;
             margin-bottom: 3px;
         }
 
         .date {
+            height: 14px;
             font-size: 14px;
             font-weight: bold;
             color: rgba(255, 255, 255, 1);
-            line-height: 23px;
             margin-bottom: 30px;
         }
 
         .desc {
+            text-align: center;
             font-size: 14px;
             font-weight: bold;
             color: rgba(255, 255, 255, 1);

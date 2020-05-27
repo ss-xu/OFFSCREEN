@@ -1,33 +1,27 @@
 <template>
-    <div class="about">
-        <CommonLayout>
-            <div class="author-detail">
-                <p class="content">{{$t('about.content')}}</p>
-                <p class="contact">Contatto con Tianyi: xty311@gmail.com</p>
-            </div>
-            <ul>
-                <Preview/>
-            </ul>
-        </CommonLayout>
+    <div class="curator">
+        <CommonLayout/>
+        <div class="curator-detail">
+            <p class="content">{{$t('curator.content')}}</p>
+            <p class="contact">Contatto con Tianyi: angiedesideri@gmail.com</p>
+        </div>
     </div>
 </template>
 <script lang="ts">
     import { Vue, Component } from 'vue-property-decorator';
     import CommonLayout from '@/components/CommonLayout.vue';
-    import Preview from '@/components/Preview.vue';
 
     @Component({
         components: {
             CommonLayout,
-            Preview,
         }
     })
-    export default class About extends Vue {
+    export default class Curator extends Vue {
 
     }
 </script>
 <style lang="scss" scoped>
-    .author-detail {
+    .curator-detail {
         margin: 0 auto;
         width: 77%;
         padding-top: 47px;
