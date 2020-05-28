@@ -2,7 +2,7 @@
     <div class="author-wrapper">
         <span class="author">{{$t('about.author')}}</span>
         <span class="projectName">{{$t('about.projectName')}}</span>
-        <span class="curator">{{$t('about.curator')}}</span>
+        <span class="curator">{{$t('about.curator')}}<span class="name">{{' ' + $t('about.curatorAuthor')}}</span></span>
     </div>
 </template>
 <script lang="ts">
@@ -20,12 +20,11 @@
         justify-content: center;
 
         .author {
-            height: 27px;
+            height: 29px;
             font-size: 28px;
             font-weight: bold;
-            text-decoration: underline;
             color: rgba(0, 0, 0, 1);
-            margin-bottom: 17px;
+            margin-bottom: 15px;
         }
 
         .projectName {

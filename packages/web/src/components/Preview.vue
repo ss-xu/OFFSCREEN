@@ -4,13 +4,16 @@
         <Modal
                 :name="modalName"
                 width="77%"
+                height="79%"
                 :adaptive="true"
                 :clickToClose="false"
                 class="preview-modal"
                 @opened="handleModalOpened"
         >
             <div class="modal-container">
-                <div class="content"></div>
+                <div class="content">
+                    <component :is="PreviewComponentMap[type]" v-bind="config"/>
+                </div>
                 <span class="close" @click="handleModalClose">
                 <img src="@/assets/preview-close@2x.webp" alt="close"/>
             </span>
@@ -19,13 +22,34 @@
     </div>
 </template>
 <script lang="ts">
-    import { Vue, Component } from 'vue-property-decorator';
+    import { Vue, Component, Prop } from 'vue-property-decorator';
+    import { PreviewIframeConfig, PreviewImageConfig, PreviewType } from '@/utils';
+    import PreviewImages from '@/components/PreviewImages.vue';
+    import PreviewIframe from '@/components/PreviewIframe.vue';
 
     @Component({})
     export default class Preview extends Vue {
 
-        private get modalName() {
-            return 'modal';
+        @Prop({
+            required: true,
+        })
+        private type!: PreviewType;
+
+        @Prop({
+            required: true,
+        })
+        private config!: PreviewIframeConfig | PreviewImageConfig;
+
+        @Prop({
+            required: true
+        })
+        private modalName!: string;
+
+        private get PreviewComponentMap() {
+            return {
+                [PreviewType.iframe]: PreviewIframe,
+                [PreviewType.image]: PreviewImages,
+            }
         }
 
         private handleModalOpened(event: any) {
@@ -34,10 +58,6 @@
 
         private handleModalClose() {
             this.$modal.hide(this.modalName);
-        }
-
-        private mounted() {
-            // this.$modal.show(this.modalName);
         }
     }
 </script>
@@ -59,10 +79,11 @@
 
     .modal-container {
         display: flex;
+        height: 100%;
 
         .content {
             flex: 1;
-            background: red;
+            overflow: auto;
         }
 
         .close {

@@ -5,16 +5,27 @@
                 <p class="content">{{$t('about.content')}}</p>
                 <p class="contact">Contatto con Tianyi: xty311@gmail.com</p>
             </div>
-            <ul>
-                <Preview/>
+            <ul class="work-list">
+                <li v-for="(previewItem, index) in previewList" :key="index">
+                    <Preview v-bind="previewItem.previewConfig" :modal-name="previewItem.modalName">
+                        <img class="work-item-preview" :src="previewItem.previewUrl"
+                             :alt="previewItem.title"
+                             @click="$modal.show(previewItem.modalName)"
+                        />
+                        <span class="work-item-title">{{previewItem.title}}</span>
+                    </Preview>
+                </li>
             </ul>
         </CommonLayout>
     </div>
 </template>
 <script lang="ts">
-    import { Vue, Component } from 'vue-property-decorator';
+    import { Component, Vue } from 'vue-property-decorator';
     import CommonLayout from '@/components/CommonLayout.vue';
     import Preview from '@/components/Preview.vue';
+    import { PreviewType, CommonPreviewItem } from '@/utils';
+    import { GoogleDriveImageShortLinkPrefix } from '@/common/utils';
+    import { nanoid } from 'nanoid'
 
     @Component({
         components: {
@@ -23,32 +34,42 @@
         }
     })
     export default class About extends Vue {
-
+        private previewList: CommonPreviewItem[] = [
+            {
+                title: 'Testo di Fuori Campo, 2019',
+                modalName: nanoid(),
+                previewUrl: `${GoogleDriveImageShortLinkPrefix}1hT7vlQIYoPBZB5HqGnt-KSzSWmVd4HRB`,
+                previewConfig: {
+                    type: PreviewType.iframe,
+                    config: {
+                        url: 'https://drive.google.com/file/d/14y4Ru-xUzGM6KeX8eTa614P0GJNSaTr4/preview',
+                    }
+                }
+            },
+            {
+                title: 'Libro, i cinesi non muoiono mai',
+                modalName: nanoid(),
+                previewUrl: `${GoogleDriveImageShortLinkPrefix}1DggXyzdPGV0DGSF6wKKHd-1WLsq7Bb_G`,
+                previewConfig: {
+                    type: PreviewType.iframe,
+                    config: {
+                        url: 'https://drive.google.com/file/d/1vljOFMgiaXOcIKyuadf4RrG6g25DY3mq/preview',
+                    }
+                }
+            },
+            {
+                title: 'Data del Centro Pecci e degli immigrati cinesi a Prato, 2019\n',
+                modalName: nanoid(),
+                previewUrl: `${GoogleDriveImageShortLinkPrefix}1KHGzMgeTLl4ZbEPAuuSpIzSi2WIuTWQF`,
+                previewConfig: {
+                    type: PreviewType.image,
+                    config: {
+                        urls: [`${GoogleDriveImageShortLinkPrefix}1flK_Wdwm5IVEHF46zYGZXaB_xtBrco-G`, `${GoogleDriveImageShortLinkPrefix}1fN6gTgXWnzrFiok-Lqr3F065asZ5aHEx`]
+                    }
+                }
+            }
+        ];
     }
 </script>
 <style lang="scss" scoped>
-    .author-detail {
-        margin: 0 auto;
-        width: 77%;
-        padding-top: 47px;
-
-        p {
-            margin: 0;
-        }
-
-        .content {
-            font-size: 14px;
-            font-weight: bold;
-            color: rgba(0, 0, 0, 1);
-            line-height: 18px;
-            margin-bottom: 12px;
-        }
-
-        .contact {
-            height: 15px;
-            font-size: 14px;
-            font-weight: bold;
-            color: rgba(0, 0, 0, 1);
-        }
-    }
 </style>

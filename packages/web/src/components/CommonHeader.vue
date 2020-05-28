@@ -1,6 +1,6 @@
 <template>
     <div class="common-header">
-        <Author class="author"/>
+        <Author class="common-author"/>
         <div class="line"/>
     </div>
 </template>
@@ -19,7 +19,7 @@
 </script>
 <style lang="scss" scoped>
     .common-header {
-        .author {
+        .common-author {
             width: 90%;
             padding-top: 5%;
             margin-bottom: 50px;

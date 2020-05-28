@@ -23,7 +23,9 @@
         position: fixed;
         right: 5%;
         bottom: 5%;
+        height: 16px;
         font-size: 20px;
+        font-family: Heiti SC, sans-serif;
         font-weight: bold;
         color: rgba(0, 0, 0, 1);
         z-index: 9999;

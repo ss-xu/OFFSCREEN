@@ -6,6 +6,7 @@
 
 <style lang="scss">
     @import "~normalize.css";
+    @import "common/common.scss";
 
     * {
         box-sizing: border-box;
