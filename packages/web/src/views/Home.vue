@@ -26,8 +26,10 @@
             </li>
         </ul>
         <div class="video-info" v-if="isShowVideoInfo">
-            <span class="title">{{activeVideoInfo.title}}</span>
-            <span class="date">{{activeVideoInfo.date}}</span>
+            <div>
+                <span class="title">{{activeVideoInfo.title}}</span>
+                <span class="date">{{activeVideoInfo.date}}</span>
+            </div>
             <span class="desc">{{activeVideoInfo.desc}}</span>
         </div>
         <span class="video-close" v-if="activeVideoId !== -1" @click="handleVideoClose">< Back</span>
@@ -127,7 +129,7 @@
         }
 
         private get videoUrlQuery() {
-            return `?rel=0&enablejsapi=1&origin=${getOrigin()}`;
+            return `?autoplay=1&fs=1&modestbranding=1&rel=0&enablejsapi=1&origin=${encodeURIComponent(getOrigin())}`
         }
 
         private get activeVideoInfo() {
@@ -142,10 +144,7 @@
         }
 
         private get isShowVideoInfo() {
-            const isPlaying = this.activeYTState === 1;
-            const isPaused = this.activeYTState === 2;
-            const isEnded = this.activeYTState === 0;
-            return (!!this.activeVideoInfo && !isPlaying) || (isPaused || isEnded);
+            return  !!this.activeVideoInfo;
         }
 
         @Watch('activeLocale')
@@ -327,39 +326,39 @@
     }
 
     .video-info {
-        width: 52%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        margin-top: 7px;
+        width: 100%;
         position: absolute;
         left: 0;
-        top: 50%;
-        transform: translate(-30px, -50%);
+        top: 100%;
         z-index: 10;
+
+        & > div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
 
         .title {
             height: 18px;
             font-size: 18px;
             font-weight: bold;
             color: rgba(255, 255, 255, 1);
-            margin-bottom: 3px;
         }
 
         .date {
-            height: 14px;
+            height: 13px;
             font-size: 14px;
-            font-weight: bold;
+            font-weight: 400;
             color: rgba(255, 255, 255, 1);
-            margin-bottom: 30px;
         }
 
         .desc {
-            text-align: center;
-            font-size: 14px;
-            font-weight: bold;
+            font-size: 12px;
+            font-weight: 400;
             color: rgba(255, 255, 255, 1);
-            line-height: 24px;
+            line-height: 18px;
         }
     }
 
