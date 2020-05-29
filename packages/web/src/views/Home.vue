@@ -1,10 +1,10 @@
 <template>
     <div class="home">
         <div class="header">
-            <div class="nav">
-                <span @click="handlePageJump('about')">X</span>
-                <span @click="handlePageJump('project')">O</span>
-                <span @click="handlePageJump('curator')">D</span>
+            <div class="nav" :class="{'temp-active': isNavTempActive}">
+                <span @click="handlePageJump('about')">X<span class="tooltip">{{$t('about.author')}}</span></span>
+                <span @click="handlePageJump('project')">O<span class="tooltip">{{$t('about.projectName')}}</span></span>
+                <span @click="handlePageJump('curator')">D<span class="tooltip">{{$t('about.curatorAuthor')}}</span></span>
             </div>
             <div class="locale">
                 <span :class="isEnActiveClass" @click="activeLocale = 'en'">En</span> | <span :class="isItActiveClass"
@@ -21,8 +21,14 @@
                 :style="video.style"
             >
                 <img :src="video.preview" alt="preview" @click="handleViewShow(video)"/>
-                <iframe v-if="activeVideoId === video.id" :src="video.url + videoUrlQuery" width="100%" height="100%"
-                        id="video-frame" frameborder="0"/>
+                <iframe v-if="activeVideoId === video.id"
+                        :src="video.url + videoUrlQuery"
+                        width="100%"
+                        height="100%"
+                        id="video-frame"
+                        frameborder="0"
+                        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen/>
             </li>
         </ul>
         <div class="video-info" v-if="isShowVideoInfo">
@@ -60,11 +66,13 @@
         private isActiveYTReady: boolean = false;
         private activeYTState: YT.PlayerState = -1;
         private activeLocale: 'en' | 'it' = 'en';
+        private isNavTempActive: boolean = false;
+        private navTempActiveInterval: ReturnType<typeof setTimeout> | undefined;
         private activeVideoId: number = -1;
         private videoList: VideoItem[] = [
             {
                 id: 1,
-                url: 'https://www.youtube.com/embed/6LlividaBcE',
+                url: '//www.youtube.com/embed/LiXMfZS32WI',
                 preview: require('@/assets/video_1@2x.webp'),
                 style: {
                     width: '100%',
@@ -72,7 +80,7 @@
             },
             {
                 id: 2,
-                url: 'https://www.youtube.com/embed/6LlividaBcE',
+                url: '//www.youtube.com/embed/6LlividaBcE',
                 preview: require('@/assets/video_2@2x.webp'),
                 style: {
                     width: '77%',
@@ -96,7 +104,7 @@
             },
             {
                 id: 5,
-                url: 'https://www.youtube.com/embed/6LlividaBcE',
+                url: '//www.youtube.com/embed/HUcgrxHeWBQ',
                 preview: require('@/assets/video_5@2x.webp'),
                 style: {
                     width: '34%',
@@ -104,7 +112,7 @@
             },
             {
                 id: 6,
-                url: 'https://www.youtube.com/embed/6LlividaBcE',
+                url: '//www.youtube.com/embed/xgLA03Yo-WE',
                 preview: require('@/assets/video_6@2x.webp'),
                 style: {
                     width: '25%',
@@ -144,7 +152,7 @@
         }
 
         private get isShowVideoInfo() {
-            return  !!this.activeVideoInfo;
+            return !!this.activeVideoInfo;
         }
 
         @Watch('activeLocale')
@@ -155,7 +163,17 @@
         }
 
         private handleViewShow(videoItem: VideoItem) {
-            if (videoItem.id === 7 || this.activeVideoId !== -1) {
+            if (this.activeVideoId !== -1) {
+                return;
+            }
+            if (videoItem.id === 7) {
+                this.isNavTempActive = true;
+                if (this.navTempActiveInterval) {
+                    clearInterval(this.navTempActiveInterval);
+                }
+                this.navTempActiveInterval = setTimeout(() => {
+                    this.isNavTempActive = false
+                }, 2000);
                 return;
             }
             this.activeVideoId = videoItem.id;
@@ -240,18 +258,36 @@
         font-weight: bold;
         color: rgba(94, 93, 93, 1);
 
-        span {
+        & > span {
+            position: relative;
             margin-right: 11px;
             cursor: pointer;
 
             &:hover {
                 color: #fff;
+                .tooltip {
+                    display: inline-block;
+                }
             }
 
             &:last-child {
                 margin-right: 0;
             }
 
+            .tooltip {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translate(-50%, calc(-100% - 8px));
+                color: #fff;
+                white-space: nowrap;
+                display: none;
+                font-size: 16px;
+            }
+
+        }
+        &.temp-active {
+            color: #fff;
         }
     }
 
@@ -296,12 +332,6 @@
             top: 0;
             left: 0;
             transform: none;
-        }
-
-        &:last-child {
-            img {
-                cursor: default;
-            }
         }
 
         &.active {
