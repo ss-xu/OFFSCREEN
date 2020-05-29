@@ -7,8 +7,8 @@
                 <span @click="handlePageJump('curator')">D<span class="tooltip">{{$t('about.curatorAuthor')}}</span></span>
             </div>
             <div class="locale">
-                <span :class="isEnActiveClass" @click="activeLocale = 'en'">En</span> | <span :class="isItActiveClass"
-                                                                                              @click="activeLocale = 'it'">It</span>
+                <span :class="isEnActiveClass" @click="handleLocale('en')">En</span> | <span :class="isItActiveClass"
+                                                                                              @click="handleLocale('it')">It</span>
             </div>
         </div>
         <ul class="video-list">
@@ -65,7 +65,6 @@
         private ytPlayer: YT.Player | null = null;
         private isActiveYTReady: boolean = false;
         private activeYTState: YT.PlayerState = -1;
-        private activeLocale: 'en' | 'it' = 'en';
         private isNavTempActive: boolean = false;
         private navTempActiveInterval: ReturnType<typeof setTimeout> | undefined;
         private activeVideoId: number = -1;
@@ -155,11 +154,12 @@
             return !!this.activeVideoInfo;
         }
 
-        @Watch('activeLocale')
-        private watchActiveLocale(n: string, o: string) {
-            if (n !== o && o) {
-                this.$i18n.locale = n;
-            }
+        private get activeLocale() {
+            return this.$i18n.locale || 'en';
+        }
+
+        private handleLocale(locale: string) {
+            this.$i18n.locale = locale;
         }
 
         private handleViewShow(videoItem: VideoItem) {

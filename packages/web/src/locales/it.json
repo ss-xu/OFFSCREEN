@@ -3,42 +3,49 @@
     "video_1": {
       "title": "OFF SCREEN (10’:09’’)",
       "date": "Prato, 2019",
-      "desc": "Siamo in un supermercato di Prato. Una telecamera fissa riprende il reparto cassa dove si alternano diversi clienti e gli impiegati sono fermi alle loro postazioni, affaccendati nelle occupazioni di una qualsiasi giornata lavorativa. Intanto, su uno schermo posto in alto, tra le due corsie, un’apparizione miracolosa: il Centro Pecci entra nel supermercato."
+      "desc": "Come in un documentario, scorrono brevi estratti video sul Centro Luigi Pecci. La voce fuoricampo di Tianyi Xu descrive in maniera non sistematica la storia e gli obiettivi del museo, il suo rapporto con la città. Alla narrazione ufficiale si interpongono frammenti di ricordi, sensazioni, domande, speculazioni di carattere generale."
     },
     "video_2": {
       "title": "FUORI CAMPO (10’:09’’)",
       "date": "Prato, 2019",
-      "desc": "Siamo in un supermercato di Prato. Una telecamera fissa riprende il reparto cassa dove si alternano diversi clienti e gli impiegati sono fermi alle loro postazioni, affaccendati nelle occupazioni di una qualsiasi giornata lavorativa. Intanto, su uno schermo posto in alto, tra le due corsie, un’apparizione miracolosa: il Centro Pecci entra nel supermercato."
+      "desc": "Siamo in un supermercato di Prato. Una telecamera fissa riprende il reparto cassa dove si alternano i clienti e gli impiegati sono fermi alle loro postazioni, affaccendati nelle occupazioni di una qualsiasi giornata lavorativa. Intanto, su uno schermo posto in alto, tra le due corsie, un’apparizione miracolosa: il Centro Luigi Pecci entra nel supermercato."
     },
     "video_3": {
       "title": "NO (9’:29’’)",
       "date": "Prato, 2019",
-      "desc": "Siamo in un supermercato di Prato. Una telecamera fissa riprende il reparto cassa dove si alternano diversi clienti e gli impiegati sono fermi alle loro postazioni, affaccendati nelle occupazioni di una qualsiasi giornata lavorativa. Intanto, su uno schermo posto in alto, tra le due corsie, un’apparizione miracolosa: il Centro Pecci entra nel supermercato."
+      "desc": "Tianyi Xu visita il Centro Luigi Pecci, ricercando un contatto vivo con il museo. L’esperimento fa emergere ostacoli, regole e divieti: non toccare, non filmare, non parlare. La connessione tra arte e vita può, allora, realizzarsi all’interno dell’istituzione?"
     },
     "video_4": {
       "title": "BU (9’:29’’)",
       "date": "Prato, 2019",
-      "desc": "Siamo in un supermercato di Prato. Una telecamera fissa riprende il reparto cassa dove si alternano diversi clienti e gli impiegati sono fermi alle loro postazioni, affaccendati nelle occupazioni di una qualsiasi giornata lavorativa. Intanto, su uno schermo posto in alto, tra le due corsie, un’apparizione miracolosa: il Centro Pecci entra nel supermercato."
+      "desc": "Cosa ci fa una ragazza vestita di bianco per le strade di Prato? Con un computer in mano, si aggira per i negozi e le fabbriche tessili cinesi e, sullo schermo, trasmette il video della visita al Centro Luigi Pecci. Eppure, la comunità la respinge come un corpo estraneo."
     },
     "video_5": {
-      "title": "ON THRESHOLD (2’:44’’)",
+      "title": "SULLA SOGLIA (2’:44’’)",
       "date": "Prato, 2019",
-      "desc": "Siamo in un supermercato di Prato. Una telecamera fissa riprende il reparto cassa dove si alternano diversi clienti e gli impiegati sono fermi alle loro postazioni, affaccendati nelle occupazioni di una qualsiasi giornata lavorativa. Intanto, su uno schermo posto in alto, tra le due corsie, un’apparizione miracolosa: il Centro Pecci entra nel supermercato."
+      "desc": "Tianyi Xu è ferma davanti a un supermercato di Prato e tiene fra le braccia un computer che trasmette il video della sua visita al Centro Luigi Pecci. La soglia è qui sia una condizione sia spaziale che esistenziale. Cosa significa essere “dentro” o “fuori” un luogo? Essere esterni-sentirsi estranei ad esso?"
     },
     "video_6": {
-      "title": "BLOCKED PASSAGE (4’:57’’)",
+      "title": "PASSAGGIO SBARRATO (4’:57’’)",
       "date": "Prato, 2020",
-      "desc": "Siamo in un supermercato di Prato. Una telecamera fissa riprende il reparto cassa dove si alternano diversi clienti e gli impiegati sono fermi alle loro postazioni, affaccendati nelle occupazioni di una qualsiasi giornata lavorativa. Intanto, su uno schermo posto in alto, tra le due corsie, un’apparizione miracolosa: il Centro Pecci entra nel supermercato."
+      "desc": "In un botta-risposta ironico e sdoppiato, Tianyi Xu racconta il suo ritorno al Centro Luigi Pecci e le difficoltà affrontate. Ancora una volta emergono il divieto e la negazione, in un dialogo comico che sfiora i limiti dell’assurdo."
     }
   },
   "about": {
     "author": "Tianyi Xu",
     "projectName": "OFF-SCREEN|fuoricampo",
-    "curator": "curated by",
-    "curatorAuthor": "Arianna Desideri",
+    "curator": {
+      "prefix": "a cura di",
+      "name": "Arianna Desideri"
+    },
     "content": "Tianyi Xu (Pechino, 1986) vive e studia in Italia dal 2013. All’Accademia di Belle Arti di Frosinone si è laureata in Comunicazione e valorizzazione del patrimonio artistico. Ha esordito alla Galleria Bruno Lisi (Associazione AOCF58, Roma) con la mostra Copy plan / Dissoluzione e ricostruzione della funzione (2018) a cura di Pasquale Polidori. Nelle sue ricerche è centrale l’interesse per la traduzione e gli scambi di simboli e pratiche culturali."
   },
   "curator": {
-    "content": "Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto Materiali del progetto (da scrivere)"
+    "cv": {
+      "content": "Arianna Desideri (Roma, 1996), storica dell’arte laureata all’Università di Roma Sapienza. È autrice del volume Roma 70. Interventi e pratiche artistiche nello spazio urbano (Terre Blu, Caserta, giugno 2020). Le sue ricerche si muovono in particolare tra anni ‘70, Mail-art e Institutional critique. È co-fondatrice, insieme a Jacopo Natoli, di {place_1} (2019-) e di {place_2} con Andreea Nedelcu (2013-). Ha svolto il ruolo di assistente per {place_3} di Pasquale Polidori (Roma, MACRO 2019). Realizza interviste postali con il progetto da lei ideato, Dialoghi dell’altrove, eppure in noi (2019-).",
+      "place_1": "D.A.P.A.",
+      "place_2": "Uragano elettrico",
+      "place_3": "KS, The man who smiled too much"
+    }
   }
 }

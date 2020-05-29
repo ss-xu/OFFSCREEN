@@ -2,8 +2,13 @@
     <div class="curator">
         <CommonLayout>
             <div class="curator-detail">
-                <p class="content">{{$t('curator.content')}}</p>
-                <p class="contact">Contatto con Tianyi: angiedesideri@gmail.com</p>
+                <i18n path="curator.cv.content" tag="p" class="content">
+                    <a place="place_1" target="_blank" href="//www.dapa.biz/">{{ $t('curator.cv.place_1') }}</a>
+                    <a place="place_2" target="_blank" href="//www.uraganoelettrico.it/">{{ $t('curator.cv.place_2') }}</a>
+                    <a place="place_3" target="_blank" href="//www.themanwhosmiledtoomuch.org/"><i>{{
+                        $t('curator.cv.place_3') }}</i></a>
+                </i18n>
+                <p class="contact">Contatto con Arianna: ariannadesideriad@gmail.com</p>
             </div>
             <ul class="work-list">
                 <li v-for="(previewItem, index) in previewList" :key="index">

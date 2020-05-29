@@ -2,7 +2,7 @@
     <div class="author-wrapper">
         <span class="author">{{$t('about.author')}}</span>
         <span class="projectName">{{$t('about.projectName')}}</span>
-        <span class="curator">{{$t('about.curator')}}<span class="name">{{' ' + $t('about.curatorAuthor')}}</span></span>
+        <span class="curator">{{$t('about.curator.prefix')}}<span class="name">{{' ' + $t('about.curator.name')}}</span></span>
     </div>
 </template>
 <script lang="ts">

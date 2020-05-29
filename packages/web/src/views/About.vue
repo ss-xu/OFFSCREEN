@@ -67,7 +67,29 @@
                         urls: [`${GoogleDriveImageShortLinkPrefix}1flK_Wdwm5IVEHF46zYGZXaB_xtBrco-G`, `${GoogleDriveImageShortLinkPrefix}1fN6gTgXWnzrFiok-Lqr3F065asZ5aHEx`]
                     }
                 }
-            }
+            },
+            {
+                title: 'Cession diritti utilizzo per foto e video, 2019',
+                modalName: nanoid(),
+                previewUrl: `${GoogleDriveImageShortLinkPrefix}1S_d7wDI9qT8QU-9_CEU3X4GOoPVJ-Cdr`,
+                previewConfig: {
+                    type: PreviewType.image,
+                    config: {
+                        urls: [`${GoogleDriveImageShortLinkPrefix}1S_d7wDI9qT8QU-9_CEU3X4GOoPVJ-Cdr`]
+                    }
+                }
+            },
+            {
+                title: 'Biglitti, 2019',
+                modalName: nanoid(),
+                previewUrl: `${GoogleDriveImageShortLinkPrefix}1UCGrOapUDcga6W5q7EcRrpA0Hb4UlfoJ`,
+                previewConfig: {
+                    type: PreviewType.image,
+                    config: {
+                        urls: [`${GoogleDriveImageShortLinkPrefix}1UCGrOapUDcga6W5q7EcRrpA0Hb4UlfoJ`]
+                    }
+                }
+            },
         ];
     }
 </script>

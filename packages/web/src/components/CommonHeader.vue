@@ -20,9 +20,9 @@
 <style lang="scss" scoped>
     .common-header {
         .common-author {
-            width: 90%;
+            width: calc(100% - 150px);
             padding-top: 5%;
-            margin-bottom: 50px;
+            margin: 0 auto 50px;
         }
 
         .line {

@@ -17,7 +17,7 @@
 .about,
 .curator {
   .common-container {
-    width: 77%;
+    width: calc(100% - 320px);
     margin: 0 auto 5%;
   }
 
@@ -47,11 +47,12 @@
 
   .work-list {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
 
     & > li {
+      display: inline-block;
       margin-right: 85px;
+      margin-bottom: 60px;
       width: 250px;
     }
   }
