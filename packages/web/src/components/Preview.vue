@@ -6,7 +6,7 @@
                 width="77%"
                 height="79%"
                 :adaptive="true"
-                :clickToClose="false"
+                :clickToClose="true"
                 class="preview-modal"
                 @opened="handleModalOpened"
         >

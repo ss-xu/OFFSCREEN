@@ -4,7 +4,7 @@
             <div class="nav" :class="{'temp-active': isNavTempActive}">
                 <span @click="handlePageJump('about')">X<span class="tooltip">{{$t('about.author')}}</span></span>
                 <span @click="handlePageJump('project')">O<span class="tooltip">{{$t('about.projectName')}}</span></span>
-                <span @click="handlePageJump('curator')">D<span class="tooltip">{{$t('about.curatorAuthor')}}</span></span>
+                <span @click="handlePageJump('curator')">D<span class="tooltip">{{$t('about.curator.name')}}</span></span>
             </div>
             <div class="locale">
                 <span :class="isEnActiveClass" @click="handleLocale('en')">En</span> | <span :class="isItActiveClass"
@@ -87,7 +87,7 @@
             },
             {
                 id: 3,
-                url: 'https://www.youtube.com/embed/6LlividaBcE',
+                url: '//www.youtube.com/embed/6LlividaBcE',
                 preview: require('@/assets/video_3@2x.webp'),
                 style: {
                     width: '59%',
@@ -95,7 +95,7 @@
             },
             {
                 id: 4,
-                url: 'https://www.youtube.com/embed/6LlividaBcE',
+                url: '//www.youtube.com/embed/3UXWN95nqwc',
                 preview: require('@/assets/video_4@2x.webp'),
                 style: {
                     width: '45%',

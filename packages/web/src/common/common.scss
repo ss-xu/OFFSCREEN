@@ -16,18 +16,9 @@
 
 .about,
 .curator {
-  .common-container {
-    width: calc(100% - 320px);
-    margin: 0 auto 5%;
-  }
-
   .author-detail,
   .curator-detail {
     margin: 46px 0 52px;
-
-    p {
-      margin: 0;
-    }
 
     .content {
       font-size: 14px;

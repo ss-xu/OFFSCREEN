@@ -24,5 +24,8 @@
     }
 </script>
 <style lang="scss" scoped>
-
+    .common-container {
+        width: calc(100% - 320px);
+        margin: 0 auto 5%;
+    }
 </style>

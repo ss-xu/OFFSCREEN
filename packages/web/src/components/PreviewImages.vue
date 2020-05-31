@@ -1,7 +1,7 @@
 <template>
     <ul class="preview-image-list">
         <li v-for="(url, index) in urls" :key="index">
-            <img v-if="url" :src="url" alt=""/>
+            <img v-if="url" v-gd-img="url"/>
         </li>
     </ul>
 </template>

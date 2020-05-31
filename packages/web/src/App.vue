@@ -25,6 +25,10 @@
         list-style: none;
     }
 
+    p {
+        margin: 0;
+    }
+
     body.home {
         height: 100vh;
         background: #000;

@@ -21,8 +21,8 @@
     .footer-go-back {
         cursor: pointer;
         position: fixed;
-        right: 5%;
-        bottom: 5%;
+        right: 40px;
+        bottom: 72px;
         height: 16px;
         font-size: 20px;
         font-family: Heiti SC, sans-serif;

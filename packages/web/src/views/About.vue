@@ -8,12 +8,12 @@
             <ul class="work-list">
                 <li v-for="(previewItem, index) in previewList" :key="index">
                     <Preview v-bind="previewItem.previewConfig" :modal-name="previewItem.modalName">
-                        <img class="work-item-preview" :src="previewItem.previewUrl"
+                        <img class="work-item-preview" v-gd-img="previewItem.previewUrl"
                              :alt="previewItem.title"
                              @click="$modal.show(previewItem.modalName)"
                         />
-                        <span class="work-item-title">{{previewItem.title}}</span>
                     </Preview>
+                    <span class="work-item-title">{{previewItem.title}}</span>
                 </li>
             </ul>
         </CommonLayout>
@@ -24,7 +24,6 @@
     import CommonLayout from '@/components/CommonLayout.vue';
     import Preview from '@/components/Preview.vue';
     import { PreviewType, CommonPreviewItem } from '@/utils';
-    import { GoogleDriveImageShortLinkPrefix } from '@/common/utils';
     import { nanoid } from 'nanoid'
 
     @Component({
@@ -38,7 +37,7 @@
             {
                 title: 'Testo di Fuori Campo, 2019',
                 modalName: nanoid(),
-                previewUrl: `${GoogleDriveImageShortLinkPrefix}1hT7vlQIYoPBZB5HqGnt-KSzSWmVd4HRB`,
+                previewUrl: '1hT7vlQIYoPBZB5HqGnt-KSzSWmVd4HRB',
                 previewConfig: {
                     type: PreviewType.iframe,
                     config: {
@@ -49,7 +48,7 @@
             {
                 title: 'Libro, i cinesi non muoiono mai',
                 modalName: nanoid(),
-                previewUrl: `${GoogleDriveImageShortLinkPrefix}1DggXyzdPGV0DGSF6wKKHd-1WLsq7Bb_G`,
+                previewUrl: '1DggXyzdPGV0DGSF6wKKHd-1WLsq7Bb_G',
                 previewConfig: {
                     type: PreviewType.iframe,
                     config: {
@@ -60,33 +59,33 @@
             {
                 title: 'Data del Centro Pecci e degli immigrati cinesi a Prato, 2019\n',
                 modalName: nanoid(),
-                previewUrl: `${GoogleDriveImageShortLinkPrefix}1KHGzMgeTLl4ZbEPAuuSpIzSi2WIuTWQF`,
+                previewUrl: '1KHGzMgeTLl4ZbEPAuuSpIzSi2WIuTWQF',
                 previewConfig: {
                     type: PreviewType.image,
                     config: {
-                        urls: [`${GoogleDriveImageShortLinkPrefix}1flK_Wdwm5IVEHF46zYGZXaB_xtBrco-G`, `${GoogleDriveImageShortLinkPrefix}1fN6gTgXWnzrFiok-Lqr3F065asZ5aHEx`]
+                        urls: ['1flK_Wdwm5IVEHF46zYGZXaB_xtBrco-G', '1fN6gTgXWnzrFiok-Lqr3F065asZ5aHEx']
                     }
                 }
             },
             {
                 title: 'Cession diritti utilizzo per foto e video, 2019',
                 modalName: nanoid(),
-                previewUrl: `${GoogleDriveImageShortLinkPrefix}1S_d7wDI9qT8QU-9_CEU3X4GOoPVJ-Cdr`,
+                previewUrl: '1S_d7wDI9qT8QU-9_CEU3X4GOoPVJ-Cdr',
                 previewConfig: {
                     type: PreviewType.image,
                     config: {
-                        urls: [`${GoogleDriveImageShortLinkPrefix}1S_d7wDI9qT8QU-9_CEU3X4GOoPVJ-Cdr`]
+                        urls: ['1S_d7wDI9qT8QU-9_CEU3X4GOoPVJ-Cdr']
                     }
                 }
             },
             {
                 title: 'Biglitti, 2019',
                 modalName: nanoid(),
-                previewUrl: `${GoogleDriveImageShortLinkPrefix}1UCGrOapUDcga6W5q7EcRrpA0Hb4UlfoJ`,
+                previewUrl: '1UCGrOapUDcga6W5q7EcRrpA0Hb4UlfoJ',
                 previewConfig: {
                     type: PreviewType.image,
                     config: {
-                        urls: [`${GoogleDriveImageShortLinkPrefix}1UCGrOapUDcga6W5q7EcRrpA0Hb4UlfoJ`]
+                        urls: ['1UCGrOapUDcga6W5q7EcRrpA0Hb4UlfoJ']
                     }
                 }
             },
