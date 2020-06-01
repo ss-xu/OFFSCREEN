@@ -16,7 +16,6 @@
         private handleLoad(event: Event) {
             const frame = event.currentTarget as HTMLIFrameElement;
             if (frame && frame.contentWindow) {
-                this.setHeight(frame);
                 const styleEle = document.createElement('style');
                 styleEle.setAttribute('type', 'text/css');
                 styleEle.innerHTML = 'html,body{margin: 0 !important;padding: 0 !important;max-width: 100% !important;}';
@@ -29,6 +28,7 @@
                         }
                     });
                 }
+                this.setHeight(frame);
             }
         }
 

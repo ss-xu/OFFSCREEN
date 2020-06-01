@@ -87,7 +87,7 @@
             },
             {
                 id: 3,
-                url: '//www.youtube.com/embed/6LlividaBcE',
+                url: '//www.youtube.com/embed/_6UMkSV0V_4',
                 preview: require('@/assets/video_3@2x.webp'),
                 style: {
                     width: '59%',

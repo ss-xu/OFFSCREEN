@@ -52,9 +52,7 @@
             }
         }
 
-        private handleModalOpened(event: any) {
-            console.log(event);
-        }
+        private handleModalOpened(event: any) {}
 
         private handleModalClose() {
             this.$modal.hide(this.modalName);
