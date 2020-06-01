@@ -19,11 +19,7 @@
     import CommonLayout from '@/components/CommonLayout.vue';
     import PreviewImg from '@/components/PreviewImg.vue';
     import IframeAutoHeight from '@/components/iframeAutoHeight.vue';
-
-    interface DetailItem {
-        imgUrls: string[];
-        iframeUrl: string;
-    }
+    import { DetailItem, ProjectConfig } from '@/config/project';
 
     @Component({
         components: {
@@ -33,16 +29,9 @@
         }
     })
     export default class Project extends Vue {
-        private detailList: DetailItem[] = [
-            {
-                imgUrls: ['1mWX-DIBgHeUGXFtmQEHwJKK67mvDt1GA', '1PTshF1tLI3xFY41WsOu1S3bzNh_KLGWI'],
-                iframeUrl: 'project_1.html'
-            },
-            {
-                imgUrls: ['1DdxpO4qrKQ_Lr-ewtHUBUx_HA7KGdGpm', '11oa8P5aUlsWvyxyDS0MZ1-2p3z_q67Bj', '1H1EYE2VbyifKBl6g4JrAIV2OPpRzPjs9'],
-                iframeUrl: 'project_2.html'
-            }
-        ];
+        private get detailList(): DetailItem[] {
+            return ProjectConfig;
+        }
     }
 </script>
 <style lang="scss" scoped>

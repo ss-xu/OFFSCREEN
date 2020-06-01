@@ -1,24 +1,15 @@
 # web
 
-## Project setup
-```
-yarn install
-```
+## HOME
+config path: `packages/web/src/config/home.ts`
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## ABOUT
+config path: `packages/web/src/config/about.ts`
 
-### Compiles and minifies for production
-```
-yarn build
-```
+## PROJECT
+config path: `packages/web/src/config/proejct.ts`
 
-### Lints and fixes files
-```
-yarn lint
-```
+## CURATOR
+config path: `packages/web/src/config/curator.ts`
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+

@@ -3,12 +3,14 @@
         <div class="header">
             <div class="nav" :class="{'temp-active': isNavTempActive}">
                 <span @click="handlePageJump('about')">X<span class="tooltip">{{$t('about.author')}}</span></span>
-                <span @click="handlePageJump('project')">O<span class="tooltip">{{$t('about.projectName')}}</span></span>
-                <span @click="handlePageJump('curator')">D<span class="tooltip">{{$t('about.curator.name')}}</span></span>
+                <span @click="handlePageJump('project')">O<span
+                        class="tooltip">{{$t('about.projectName')}}</span></span>
+                <span @click="handlePageJump('curator')">D<span
+                        class="tooltip">{{$t('about.curator.name')}}</span></span>
             </div>
             <div class="locale">
                 <span :class="isEnActiveClass" @click="handleLocale('en')">En</span> | <span :class="isItActiveClass"
-                                                                                              @click="handleLocale('it')">It</span>
+                                                                                             @click="handleLocale('it')">It</span>
             </div>
         </div>
         <ul class="video-list">
@@ -20,7 +22,7 @@
                 }"
                 :style="video.style"
             >
-                <img :src="video.preview" alt="preview" @click="handleViewShow(video)"/>
+                <img  v-gd-img="video.previewUrl"  @click="handleViewShow(video)"/>
                 <iframe v-if="activeVideoId === video.id"
                         :src="video.url + videoUrlQuery"
                         width="100%"
@@ -47,18 +49,8 @@
     import { Vue, Component, Watch } from 'vue-property-decorator';
     import { getOrigin } from '@/common/utils';
     import { ROUTER_ABOUT, ROUTER_CURATOR, ROUTER_PROJECT } from '@/router';
+    import { HomeConfig, VideoItem } from '@/config/home';
 
-    interface VideoItem {
-        id: number;
-        url: string;
-        preview: any;
-        style: object;
-        videoInfo?: {
-            title: string;
-            author: string;
-            desc: string;
-        }
-    }
 
     @Component({})
     export default class Home extends Vue {
@@ -68,64 +60,10 @@
         private isNavTempActive: boolean = false;
         private navTempActiveInterval: ReturnType<typeof setTimeout> | undefined;
         private activeVideoId: number = -1;
-        private videoList: VideoItem[] = [
-            {
-                id: 1,
-                url: '//www.youtube.com/embed/LiXMfZS32WI',
-                preview: require('@/assets/video_1@2x.webp'),
-                style: {
-                    width: '100%',
-                }
-            },
-            {
-                id: 2,
-                url: '//www.youtube.com/embed/6LlividaBcE',
-                preview: require('@/assets/video_2@2x.webp'),
-                style: {
-                    width: '77%',
-                }
-            },
-            {
-                id: 3,
-                url: '//www.youtube.com/embed/_6UMkSV0V_4',
-                preview: require('@/assets/video_3@2x.webp'),
-                style: {
-                    width: '59%',
-                }
-            },
-            {
-                id: 4,
-                url: '//www.youtube.com/embed/3UXWN95nqwc',
-                preview: require('@/assets/video_4@2x.webp'),
-                style: {
-                    width: '45%',
-                }
-            },
-            {
-                id: 5,
-                url: '//www.youtube.com/embed/HUcgrxHeWBQ',
-                preview: require('@/assets/video_5@2x.webp'),
-                style: {
-                    width: '34%',
-                }
-            },
-            {
-                id: 6,
-                url: '//www.youtube.com/embed/xgLA03Yo-WE',
-                preview: require('@/assets/video_6@2x.webp'),
-                style: {
-                    width: '25%',
-                }
-            },
-            {
-                id: 7,
-                url: '',
-                preview: require('@/assets/home-animate.gif'),
-                style: {
-                    width: '8%',
-                }
-            }
-        ];
+
+        private get videoList(): VideoItem[] {
+            return HomeConfig;
+        }
 
         private get isEnActiveClass() {
             return this.activeLocale === 'en' ? 'active' : '';
@@ -265,6 +203,7 @@
 
             &:hover {
                 color: #fff;
+
                 .tooltip {
                     display: inline-block;
                 }
@@ -286,6 +225,7 @@
             }
 
         }
+
         &.temp-active {
             color: #fff;
         }
