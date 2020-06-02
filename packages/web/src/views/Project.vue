@@ -7,7 +7,7 @@
                         <PreviewImg v-for="(imaUrl, imgIndex) in detailItem.imgUrls" :key="imgIndex" :url="imaUrl"/>
                     </div>
                     <div class="detail-item-right">
-                        <IframeAutoHeight :src="detailItem.iframeUrl"/>
+                        <IframeAutoHeight :src="getWork2HtmlUrl(detailItem.iframeUrl)"/>
                     </div>
                 </li>
             </ul>
@@ -31,6 +31,10 @@
     export default class Project extends Vue {
         private get detailList(): DetailItem[] {
             return ProjectConfig;
+        }
+
+        private getWork2HtmlUrl(url: string) {
+            return `word2html/${url}`;
         }
     }
 </script>

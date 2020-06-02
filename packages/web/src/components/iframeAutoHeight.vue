@@ -35,9 +35,11 @@
         private setHeight(frame: HTMLIFrameElement) {
             frame.style.height = 'auto';
             this.$nextTick(() => {
-                if (frame && frame.contentWindow) {
-                    frame.style.height = frame.contentWindow.document.documentElement.scrollHeight + 'px';
-                }
+                this.$nextTick(() => {
+                    if (frame && frame.contentWindow) {
+                        frame.style.height = frame.contentWindow.document.documentElement.scrollHeight + 'px';
+                    }
+                });
             });
         }
 

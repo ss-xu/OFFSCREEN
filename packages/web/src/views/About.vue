@@ -35,7 +35,7 @@
     })
     export default class About extends Vue {
         private get descIframeUrl(): string {
-            return AboutConfig.resumeIframeUrl;
+            return `word2html/${AboutConfig.resumeIframeUrl}`;
         }
 
         private get previewList(): CommonPreviewItem[] {
