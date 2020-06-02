@@ -37,15 +37,6 @@
     "curator": {
       "prefix": "a cura di",
       "name": "Arianna Desideri"
-    },
-    "content": "Tianyi Xu (Pechino, 1986) vive e studia in Italia dal 2013. All’Accademia di Belle Arti di Frosinone si è laureata in Comunicazione e valorizzazione del patrimonio artistico. Ha esordito alla Galleria Bruno Lisi (Associazione AOCF58, Roma) con la mostra Copy plan / Dissoluzione e ricostruzione della funzione (2018) a cura di Pasquale Polidori. Nelle sue ricerche è centrale l’interesse per la traduzione e gli scambi di simboli e pratiche culturali."
-  },
-  "curator": {
-    "cv": {
-      "content": "Arianna Desideri (Roma, 1996), storica dell’arte laureata all’Università di Roma Sapienza. È autrice del volume Roma 70. Interventi e pratiche artistiche nello spazio urbano (Terre Blu, Caserta, giugno 2020). Le sue ricerche si muovono in particolare tra anni ‘70, Mail-art e Institutional critique. È co-fondatrice, insieme a Jacopo Natoli, di {place_1} (2019-) e di {place_2} con Andreea Nedelcu (2013-). Ha svolto il ruolo di assistente per {place_3} di Pasquale Polidori (Roma, MACRO 2019). Realizza interviste postali con il progetto da lei ideato, Dialoghi dell’altrove, eppure in noi (2019-).",
-      "place_1": "D.A.P.A.",
-      "place_2": "Uragano elettrico",
-      "place_3": "KS, The man who smiled too much"
     }
   }
 }
