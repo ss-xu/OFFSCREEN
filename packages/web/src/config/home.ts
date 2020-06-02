@@ -12,9 +12,13 @@ export interface VideoItem {
 
 export const HomeConfig: VideoItem[] = [
     {
+        // 视频ID，1 是最大的
         id: 1,
+        // 视频 Youtube 地址
         url: '//www.youtube.com/embed/LiXMfZS32WI',
+        // 视频截图，内容：图片ID
         previewUrl: '1-SRBcLtEQgbIJtvb_MzdGVWog4SWtUAT',
+        // 样式，可忽略
         style: {
             width: '100%',
         }

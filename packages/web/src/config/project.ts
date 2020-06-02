@@ -5,7 +5,9 @@ export interface DetailItem {
 
 export const ProjectConfig: DetailItem[] = [
     {
+        // 项目页左侧图片，内容：图片ID，多个逗号隔开
         imgUrls: ['1mWX-DIBgHeUGXFtmQEHwJKK67mvDt1GA', '1PTshF1tLI3xFY41WsOu1S3bzNh_KLGWI'],
+        // 项目右侧内容， Word转HTML本地地址
         iframeUrl: 'project_1.html'
     },
     {

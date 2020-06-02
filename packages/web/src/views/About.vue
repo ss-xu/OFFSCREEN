@@ -2,7 +2,7 @@
     <div class="about">
         <CommonLayout>
             <div class="author-detail">
-                <IframeAutoHeight src="about.html"/>
+                <IframeAutoHeight :src="descIframeUrl"/>
             </div>
             <ul class="work-list">
                 <li v-for="(previewItem, index) in previewList" :key="index">
@@ -34,8 +34,12 @@
         }
     })
     export default class About extends Vue {
+        private get descIframeUrl(): string {
+            return AboutConfig.resumeIframeUrl;
+        }
+
         private get previewList(): CommonPreviewItem[] {
-            return AboutConfig
+            return AboutConfig.worksList;
 
         }
     }

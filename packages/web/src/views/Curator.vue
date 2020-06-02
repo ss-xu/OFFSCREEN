@@ -2,7 +2,7 @@
     <div class="curator">
         <CommonLayout>
             <div class="curator-detail">
-                <iframeAutoHeight src="./curator.html"/>
+                <iframeAutoHeight src="curator.html"/>
             </div>
             <ul class="work-list">
                 <li v-for="(previewItem, index) in previewList" :key="index">
@@ -35,8 +35,13 @@
         }
     })
     export default class Curator extends Vue {
+
+        private get descIframeUrl(): string {
+            return CuratorConfig.resumeIframeUrl;
+        }
+
         private get previewList(): CommonPreviewItem[] {
-            return CuratorConfig;
+            return CuratorConfig.worksList;
         }
     }
 </script>
