@@ -1,6 +1,6 @@
 [build]
     base = "packages/web"
-    publish = "packages/web/dist/"
+    publish = "dist/"
     command = "yarn run build"
 
 [[redirects]]
