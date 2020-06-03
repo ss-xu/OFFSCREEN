@@ -11,5 +11,3 @@ config path: `packages/web/src/config/proejct.ts`
 
 ## CURATOR
 config path: `packages/web/src/config/curator.ts`
-
-
