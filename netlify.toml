@@ -2,9 +2,3 @@
     base = "packages/web"
     publish = "dist/"
     command = "yarn run build"
-
-
-[[redirects]]
-    from = "/*"
-    to = "/index.html"
-    status = 200
