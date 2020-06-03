@@ -2,3 +2,4 @@
     base = "packages/web"
     publish = "dist/"
     command = "yarn run build"
+    ignore  = "echo 0"
