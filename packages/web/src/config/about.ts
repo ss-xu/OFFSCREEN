@@ -237,5 +237,16 @@ export const AboutConfig: AboutConfig = {
                 }
             }
         },
+        {
+            title: 'L’incomunicabilità',
+            modalName: nanoid(),
+            previewUrl: '13ZuyFBJPfuWrDkCEHLQCP1rp29hfUp5T',
+            previewConfig: {
+                type: PreviewType.image,
+                config: {
+                    urls: ['13ZuyFBJPfuWrDkCEHLQCP1rp29hfUp5T', '1WPJJYmYoKzgJttrNmY6piTzuieVuOKT0']
+                }
+            }
+        },
     ],
 };
