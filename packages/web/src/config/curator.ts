@@ -12,7 +12,7 @@ export const CuratorConfig: CuratorConfig = {
     // 与作者页一致
     worksList: [
         {
-            title: 'Quaderno del progetto',
+            title: 'Taccuino del progetto',
             modalName: nanoid(),
             previewUrl: '1N3T_VNxm83cilUaW6lq-oDeCvo5NeSCS',
             previewConfig: {
@@ -30,7 +30,7 @@ export const CuratorConfig: CuratorConfig = {
             }
         },
         {
-            title: 'Prima email',
+            title: 'Prima email, settembre 2019',
             modalName: nanoid(),
             previewUrl: '1jBSO-6eUxxjFPoM6arIghqi9dpjT_4_6',
             previewConfig: {
@@ -52,7 +52,7 @@ export const CuratorConfig: CuratorConfig = {
             }
         },
         {
-            title: 'Q&A definitivo',
+            title: 'Intervista a Tianyi Xu, maggio 2020',
             modalName: nanoid(),
             previewUrl: '1UzT-GQKPfVWeYJkNhEV7R-j7qSiLU-No',
             previewConfig: {
