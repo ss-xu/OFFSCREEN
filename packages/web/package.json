@@ -12,7 +12,7 @@
   "dependencies": {
     "@types/youtube": "^0.0.39",
     "core-js": "^3.6.4",
-    "nanoid": "^3.1.9",
+    "nanoid": "^3.1.31",
     "normalize.css": "^8.0.1",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
